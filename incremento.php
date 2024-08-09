@@ -11,7 +11,17 @@ if (!isset($_SESSION['contador'])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['incrementar'])) {
         $_SESSION['contador']++; // Incrementa o contador
-    } 
+    } else if(isset($_POST['multiplicar'])) {
+        $antVal = $_SESSION['contador'];
+        $_SESSION['contador'] *= $_SESSION['contador'];
+        if($antVal < 0){
+            $_SESSION['contador'] *= -1;
+        }
+    } else if(isset($_POST['zerar'])) {
+        $_SESSION['contador'] = 0;
+    } else {
+        $_SESSION['contador'] -= 1;
+    }
 }
 ?>
 
@@ -23,6 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Contador com Incremento/Decremento</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS and dependencies -->
+    <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -34,12 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form method="post" action="" class="text-center mt-4">
         <button type="submit" name="incrementar" class="btn btn-success">Incrementar</button>
+        <button type="submit" name="multiplicar" class="btn btn-warning">Multiplicar</button>
+        <button type="submit" name="zerar" class="btn btn-danger">Zerar</button>
+        <button type="submit" name="decrementar" class="btn btn-danger">Decrementar</button>
     </form>
 </div>
-
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

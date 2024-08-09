@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'menor' => $valor1 < $valor2,
         'maior_ou_igual' => $valor1 >= $valor2,
         'menor_ou_igual' => $valor1 <= $valor2,
+        'melhor_ou_igual'=> $valor1 >= $valor2,
     ];
 }
 ?>
@@ -60,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li class="list-group-item">Valor 1 é menor que Valor 2: <?= $resultado['menor'] ? 'Sim' : 'Não' ?></li>
             <li class="list-group-item">Valor 1 é maior ou igual a Valor 2: <?= $resultado['maior_ou_igual'] ? 'Sim' : 'Não' ?></li>
             <li class="list-group-item">Valor 1 é menor ou igual a Valor 2: <?= $resultado['menor_ou_igual'] ? 'Sim' : 'Não' ?></li>
+            <li class="list-group-item">Valor 1 é MELHOR ou igual a Valor 2: <?= $resultado['menor_ou_igual'] ? 'Sim' : 'Não' ?></li>
         </ul>
     </div>
     <?php endif; ?>
