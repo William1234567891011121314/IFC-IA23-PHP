@@ -1,15 +1,43 @@
 <?php require_once('inc/topo.php');?>
 <?php
+ini_set('max_execution_time', 60);
 session_start();
+$produtos = json_decode(file_get_contents('produtos.json'), true);
 if(!isset($_SESSION['produto'])){
-   $_SESSION['produto'] = ['preco' => 2949, 'precototal' => 2949, 'id' => 5, 'nome' => 'Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6', 'quantidade' => 1];
+   $_SESSION['produto'] = $produtos;
+   $_SESSION['desconto'] = 1;
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $_SESSION['produto']['precototal'] = $_SESSION['produto']['preco'] * $_SESSION['produto']['quantidade'];
-      $_SESSION['produto']['quantidade']--;
-      $_SESSION['produto']['precototal'] = $_SESSION['preco'] * $_SESSION['quantidade'];
+   for($id = 0; $id < count($_SESSION['produto']); $id++){
+      if(isset($_POST["aumentarquantidade-$id"])){
+         $_SESSION['produto'][$id]['quantidade']++;
+      } else if(isset($_POST["diminuirquantidade-$id"]) && $_SESSION['produto'][$id]['quantidade'] > 1){
+         $_SESSION['produto'][$id]['quantidade']--;
+      } else if(isset($_POST["deletar-$id"])){
+         unset($_SESSION['produto'][$id]);
+         $_SESSION['produto'] = array_values($_SESSION['produto']);
+      }
    }
+   if(isset($_POST['cupom']) && $_POST['cupom'] == "manuel_gomes") {
+      $_SESSION['desconto'] = 0.001;
+   }
+
+   if(isset($_POST['reset'])){
+      $_SESSION['produto'] = $produtos;
+      $_SESSION['desconto'] = 1;
+   }
+}
+function atualizarPreco() {
+   for($id = 0; $id < count($_SESSION['produto']); $id++){
+      $_SESSION['produto'][$id]['precototal'] = $_SESSION['produto'][$id]['preco'] * $_SESSION['produto'][$id]['quantidade'] * $_SESSION['desconto'];
+   }
+}
+
+for($id = 0; $id < count($_SESSION['produto']); $id++){
+   $_SESSION['produto'][$id]['precototal'] = $_SESSION['produto'][$id]['preco'] * $_SESSION['produto'][$id]['quantidade'] * $_SESSION['desconto'];
+}
+
 ?>
       <div class="main_content">
          <div class="section">
@@ -26,25 +54,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                                  <th class="product-quantity">Quantidade</th>
                                  <th class="product-subtotal">Subtotal</th>
                                  <th class="product-remove">Remove</th>
-                                 <th class="product-remove">Salvar</th>
                               </tr>
                            </thead>
                            <tbody>
-                              <tr>
-                                 <td class="product-thumbnail"><a href=""><img src="http://localhost/ifc/trabalho/img/produto.jpg" alt="Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6"></a></td>
-                                 <td class="product-name" data-title="Product"><a href="">Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6</a></td>
-                                 <td class="product-price" data-title="Price">R$ 2.949,90</td>
-                                 <td class="product-quantity" data-title="Quantity">
-                                    <div class="quantity">
-                                       <input id="qtdmenos" type="button" value="-" class="qtde" tipo="menos" name="diminuirquantidade">
-                                       <input id="qtd" type="text" disabled="" name="qtde_pedido_item" value="1" title="Qty" class="qty" size="4">
-                                       <input id="qtdmais" type="button" value="+" class="qtde" tipo="mais" name="aumentarquantidade">
-                                    </div>
-                                 </td>
-                                 <td class="product-subtotal" data-title="Total">R$ 2.949,90</td>
-                                 <td class="product-remove qtde" tipo="remove" id_produto="5" data-title="Remove"><a href="#">X</a></td>
-                                 <td class="product-refresh qtde" tipo="refres" id_produto="5" data-title="Refresh"><button id="submit">Salvar</button></td>
-                              </tr>
+                              <?php
+                                 for($id = 0; $id < count($_SESSION['produto']); $id++){
+                                    include 'model/productModel.php';
+                                 }
+                              ?>
                            </tbody>
                            <tfoot>
                               <tr>
@@ -52,10 +69,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <div class="row no-gutters align-items-center">
                                        <div class="col-lg-12 col-md-12 mb-12 mb-md-12">
                                           <div class="coupon field_form input-group">
-                                             <input type="text" value="" class="form-control form-control-sm" placeholder="Código do cupom">
-                                             <div class="input-group-append">
-                                                <button class="btn btn-fill-out btn-sm" type="submit">Aplicar cupom</button>
-                                             </div>
+                                             <form action="" method="post">
+                                                <input type="text" value="" class="form-control form-control-sm" placeholder="Código do cupom" name="cupom">
+                                                <div class="input-group-append">
+                                                   <button class="btn btn-fill-out btn-sm" type="submit">Aplicar cupom</button>
+                                                </div>
+                                             </form>
                                           </div>
                                        </div>
                                     </div>
@@ -63,7 +82,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                               </tr>
                            </tfoot>
                         </table>
-                         <a href="http://localhost/ifc/trabalho/login.php" class="btn btn-fill-out">Concluir compra</a>
+                        <a href="http://localhost/ifc/trabalho/login.php" class="btn btn-fill-out">Concluir compra</a>
+                        <form method="post" action="">
+                           <button type="submit" class="btn btn-fill-out btn-sm" name="reset">Resetar carrinho</button>
+                        </form>
                      </div>
                   </div>
                </div>
@@ -79,23 +101,3 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
      </body>
 </html>
-<script>
-   let menos = document.querySelector('#qtdmenos')
-   let mais = document.querySelector('#qtdmais')
-   let qt = document.querySelector('#qtd').value
-   let bt = document.querySelector('#submit')
-
-   mais.onclick = function() {
-      qt++
-   }
-
-   menos.onclick = function() {
-      if(qt != 0) {
-         qt--
-      }
-   }
-
-   bt.onclick = function() {
-      
-   }
-</script>

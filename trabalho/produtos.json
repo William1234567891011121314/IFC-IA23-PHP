@@ -1,0 +1,23 @@
+[
+    {
+        "nome": "Placa de Vídeo Asus Dual NVIDIA GeForce RTX 2070 EVO V2 OC Edition, 8GB, GDDR6",
+        "preco": 2949.90,
+        "precototal": 249.90,
+        "quantidade": 1,
+        "imgAddress": "produto.jpg"
+    },
+    {
+        "nome": "Fonte Asus ROG 1200w 80 Plus Titanium",
+        "preco": 2499.99,
+        "precototal": 2499.99,
+        "quantidade": 1,
+        "imgAddress": "fonte-asus-rog-1200w-80-plus-titanium.jpg"
+    },
+    {
+        "nome": "Processador Ryzen 5 8600G AM5 4.3GHz (5GHz Max)",
+        "preco": 1265.99,
+        "precototal": 1265.99,
+        "quantidade": 1,
+        "imgAddress": "ryzen-5-8600g.jpg"
+    }
+]
