@@ -1,4 +1,31 @@
 <?php require_once('inc/topo.php');?>
+<?php
+   session_start();
+   if(!isset($_SESSION['compras'])){
+      $_SESSION['compras'] = array();
+   }
+
+   if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      array_push($_SESSION['compras'], array(
+         'nome' => $_POST['nome_cliente'],
+         'sobrenome' => $_POST['sobrenome_cliente'],
+         'cpf' => $_POST['cpf_cliente'],
+         'cep' => $_POST['cep_cliente_endereco'],
+         'endereco' => $_POST['endereco_cliente_endereco'],
+         'numero' => $_POST['numero_clilente_endereco'],
+         'complemento' => $_POST['complemento_cliente_endereco'],
+         'bairro' => $_POST['bairro_cliente_endereco'],
+         'uf' => $_POST['cod_uf'],
+         'cidade' => $_POST['nome_cidade'],
+         'fone' => $_POST['fone_cliente'],
+         'whats' => $_POST['whats_cliente'],
+         'email' => $_POST['email_cliente'],
+         'obs' => $_POST['obs_pedido'],
+      ));
+      header('Location: /ifc/trabalho/parabens.php');
+   }
+
+?>
       <div class="main_content">
          <!-- START SECTION SHOP -->
          <div class="section">
@@ -68,7 +95,7 @@
                         </div>
                         <div class="form-group">
                            <label>Cidade</label>
-                           <input class="form-control" required="" type="text" name="namo_cidade" placeholder="Cidade">
+                           <input class="form-control" required="" type="text" name="nome_cidade" placeholder="Cidade">
                         </div>
                         <div class="form-group">
                            <input class="form-control" required="" type="text" name="fone_cliente" placeholder="Telefone *" value="">

@@ -1,4 +1,27 @@
 <?php require_once('inc/topo.php');?>
+<?php
+   session_start();
+
+   if (!isset($_SESSION['users'])) {
+      $_SESSION['users'] = array();
+   }
+   
+   if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $correctEmail = false;
+      $correctPasswd = false;
+      for($i = 0; $i < count($_SESSION['users']); $i++){
+         if($_POST['email_cliente'] == $_SESSION['users'][$i]['email']){
+            $correctEmail = true;
+         }
+         if($_POST['cliente_senha'] == $_SESSION['users'][$i]['senha']){
+            $correctPasswd = true;
+         }
+      }
+      if($correctEmail && $correctPasswd){
+         header('Location: /ifc/trabalho/finalizar.php');
+      }
+   }
+?>
       <div class="main_content">
          <div class="login_register_wrap section">
             <div class="container">
@@ -13,10 +36,20 @@
                               <div class="form-group">
                                  <label>E-mail</label>
                                  <input type="text" required="" class="form-control" name="email_cliente">
+                                 <?php
+                                    if(!$correctEmail){
+                                       echo "Email incorreto!";
+                                    }
+                                 ?>
                               </div>
                               <div class="form-group">
                                  <label>Senha</label>
                                  <input class="form-control" required="" type="password" name="cliente_senha">
+                                 <?php
+                                 if(!$correctPasswd){
+                                    echo 'Senha incorreta!';
+                                 }
+                                 ?>
                               </div>
                               <div class="form-group">
                                  <button type="submit" class="btn btn-fill-out btn-block" name="login">Acessar</button>

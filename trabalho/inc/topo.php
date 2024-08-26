@@ -36,7 +36,7 @@
          <div class="middle-header dark_skin">
             <div class="container">
                <div class="nav_block">
-                  <a class="navbar-brand" href="">
+                  <a class="navbar-brand" href="/ifc/trabalho/login.php">
                   <img class="logo_light" src="http://localhost/ifc/trabalho/img/logo_topo.png" alt="logo">
                   <img class="logo_dark" src="http://localhost/ifc/trabalho/img/logo_topo.png" alt="logo">
                   </a>
