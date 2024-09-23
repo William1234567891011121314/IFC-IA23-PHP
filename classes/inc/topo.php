@@ -1,8 +1,3 @@
-<?php
-session_start();
-error_reporting(0);
-?>
-
 <html lang="en">
    <head>
         <!-- Meta -->
@@ -11,29 +6,29 @@ error_reporting(0);
       <meta content="Anil z" name="author">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Script place</title>
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/animate.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/animate.css">
       <!-- Latest Bootstrap min CSS -->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/bootstrap.min.css">
       <!-- Icon Font CSS -->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/all.min.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/ionicons.min.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/themify-icons.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/linearicons.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/flaticon.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/simple-line-icons.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/all.min.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/ionicons.min.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/themify-icons.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/linearicons.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/flaticon.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/simple-line-icons.css">
       <!--- owl carousel CSS-->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/owl.theme.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/owl.theme.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/owl.theme.default.min.css">
       <!-- Magnific Popup CSS -->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/magnific-popup.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/magnific-popup.css">
       <!-- Slick CSS -->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/jquery-ui.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/slick.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/slick-theme.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/jquery-ui.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/slick.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/slick-theme.css">
       <!-- Style CSS -->
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/style.css">
-      <link rel="stylesheet" href="http://localhost/ifc/trabalho/css/responsive.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/style.css">
+      <link rel="stylesheet" href="http://localhost/IFC-IA23-PHP/trabalho/css/responsive.css">
       <!-- Hotjar Tracking Code for bestwebcreator.com -->
    </head>
    <body class="" style="">
@@ -42,8 +37,8 @@ error_reporting(0);
             <div class="container">
                <div class="nav_block">
                   <a class="navbar-brand" href="">
-                  <img class="logo_light" src="http://localhost/ifc/trabalho/img/logo_topo.png" alt="logo">
-                  <img class="logo_dark" src="http://localhost/ifc/trabalho/img/logo_topo.png" alt="logo">
+                  <img class="logo_light" src="http://localhost/IFC-IA23-PHP/trabalho/img/logo_topo.png" alt="logo">
+                  <img class="logo_dark" src="http://localhost/IFC-IA23-PHP/trabalho/img/logo_topo.png" alt="logo">
                   </a>
                </div>
             </div>

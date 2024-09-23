@@ -1,19 +1,20 @@
 <?php
     class Produto {
+        public function __construct() {}
         private $nome;
         private $preco;
         private $quantidade;
         private $priceModifier;
         public function setNome($nome){
-            $this->$nome = $nome;
+            $this->nome = $nome;
         }
 
         public function setPreco($preco) {
-            $this->$preco = $preco;
+            $this->preco = $preco;
         }
 
         public function setQuantidade($quantidade) {
-            $this->$quantidade = $quantidade;
+            $this->quantidade = $quantidade;
         }
 
         public function setPriceModifier($priceModifier){
@@ -28,7 +29,7 @@
             return $this->preco;
         }
 
-        public function getQuantidade() {
+        public function getQuantidade() {   
             return $this->quantidade;
         }
 
